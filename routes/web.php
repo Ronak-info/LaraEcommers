@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,3 +27,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/home',[HelloController::class,'index']);
+
+Route::post('/login',[UserController::class,'login']);
+Route::get('/welcome',[ProductController::class,'index']);
+
