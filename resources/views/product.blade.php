@@ -11,12 +11,14 @@
             <div class="carousel-inner ">
               @foreach ($data as $v )  
               <div class="carousel-item {{$v->id==1?'active':''}}">
+             <a href="details/{{$v->id}}">            
                 <img class="slider-img" src="{{asset('images')}}/{{$v->gallery}}" alt="{{$v->name}}{{$v->name}}" width="100%" height="500">
                 <div class="carousel-caption">
                   <h3 class="" >{{$v->name}}</h3>
                   <p class="" >Rs.{{$v->price}}/-</p>
-                </div>               
-              </div>
+                </div>            
+             </a>
+            </div>
               @endforeach  
             </div>
             <a class="carousel-control-prev" href="#demo" data-slide="prev">
@@ -32,17 +34,25 @@
             <div class="carousel-inner ">
                 @foreach ($data as $v )  
                 <div class="trending-item">
-                  <img src="{{asset('images')}}/{{$v->gallery}}" height="200px;">
-                    <div class="">
-                       <h4 class=" ml-4">{{$v->name}}</h4>    
-                    </div>          
+                 <a href="details/{{$v->id}}">                
+                  <div class="row">
+                    <div class="col-2 p-3">
+                     <img src="{{asset('images')}}/{{$v->gallery}}" height="200px;" width="220x;"> 
+                    </div>
+                 </div>            
+                 
+                  <div class="">
+                     <h5 class=" ml-4">{{$v->name}}</h5> 
+                     <h5 class=" ml-4">Rs.{{$v->price}}</h5>    
+                  </div>    
+                </a>      
                 </div>
                 @endforeach  
               </div>
         </div>
         <hr/> 
       </div>
-        hello
+       
 
 
 @endsection

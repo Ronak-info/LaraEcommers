@@ -26,8 +26,11 @@
          width: 25%;
        
      }
-     .slider{
-         
+    
+
+     .search-box
+     {
+         width: 500px; !important;
      }
     
 

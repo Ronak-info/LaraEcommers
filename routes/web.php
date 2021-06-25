@@ -21,12 +21,22 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 
-// Route::get('/hello',function()
-// {
-//     return view('hello');
-// });
+Route::get('/logout',function()
+{
+    Session::forget('user');
+    return redirect ('/');
+});
 
 Route::get('/login',[HelloController::class,'index']);
 Route::post('/login',[UserController::class,'login']);
 Route::get('/',[ProductController::class,'index']);
+Route::get('/details/{id}',[ProductController::class,'details']);
+Route::get('/search',[ProductController::class,'search']);
+Route::post('/add_to_cart',[ProductController::class,'add_to_cart']);
+Route::get('/catrtlist',[ProductController::class,'catrtlist']);
+Route::get('/removecart/{id}',[ProductController::class,'removecart']);
+Route::get('/ordernow',[ProductController::class,'ordernow']);
+
+
+
 
