@@ -17,17 +17,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/hello',function()
 // {
 //     return view('hello');
 // });
 
-Route::get('/home',[HelloController::class,'index']);
-
+Route::get('/login',[HelloController::class,'index']);
 Route::post('/login',[UserController::class,'login']);
-Route::get('/welcome',[ProductController::class,'index']);
+Route::get('/',[ProductController::class,'index']);
 
