@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\product;
+use App\Models\order;
 use App\Models\cart;
 use Session;
 use Illuminate\Support\Facades\DB;
@@ -68,9 +69,11 @@ class ProductController extends Controller
       
     }
     
-    public function catrtlist()
+    public function catrtlist(Request $request)
     {
         //
+        if($request->session()->has('user'))
+        {
         $user_id = Session::get('user')['id'];
         $data =  DB::table('carts')
         ->join('products','carts.product_id','products.id')
@@ -78,7 +81,11 @@ class ProductController extends Controller
         ->where('carts.user_id',$user_id)
         ->get();
 
-        return view('cardlist',['data'=>$data]);    
+        return view('cardlist',['data'=>$data]);
+        } 
+        else{
+            return redirect('/login');
+        }   
     }
 
     public function removecart($id)
@@ -103,6 +110,56 @@ class ProductController extends Controller
     }
     
 
+    public function orderplace(Request $request)
+    {
+        //
+        $user_id = Session::get('user')['id'];
+        $allCart = cart::where('user_id',$user_id)->get();
+        foreach ($allCart as $cart) {
+           $order = new order;
+           $order->product_id=$cart['product_id'];
+           $order->user_id=$cart['user_id'];
+           $order->address=$request->address;
+           $order->payment_method=$request->payment;;
+           $order->payment_status='pending';
+           $order->status='pending';
+
+           $order->save();
+           
+        }
+        cart::where('user_id',$user_id)->delete();
+        return redirect('/');
+    }
+
+    
+    public function myorders(Request $request)
+    {
+        //
+        if($request->session()->has('user'))
+        {
+        $user_id = Session::get('user')['id'];
+        $orders =  DB::table('orders')
+        ->join('products','orders.product_id','products.id')
+        ->where('orders.user_id',$user_id)
+        ->get();
+
+        return view('myorders',['orders'=>$orders]);
+        }
+        else
+        {
+            return redirect('/login');
+        }
+        
+        
+    }
+    public function about(Request $request)
+    {
+        //
+        
+        return view('about');
+        
+    }
+    
 
     
     

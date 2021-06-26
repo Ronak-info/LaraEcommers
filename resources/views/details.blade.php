@@ -3,10 +3,10 @@
 @section('content')
       <div class="row">
          
-          <div class=" col-sm-6">
+          <div class=" col-sm-6 p-5">
              <img src="{{asset('images')}}/{{$data['gallery']}}"  width="400px" height="300px;">
           </div>
-          <div class="">
+          <div class="col-6 p-5">
              <a href="/">Go Back</a> 
               <h2>Name :{{$data['name']}}</h3>
               <h3>Price : {{$data['price']}}</h3>

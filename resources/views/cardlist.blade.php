@@ -26,21 +26,33 @@
         </div>
         <hr/> 
       </div> --}}
+    
+     <div class="container">
+      <h2>Cart List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Remove</th>
+            <th>Image</th>
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{-- {{$data}} --}}
           
-      <div class="container">
-        <h2>Cart List</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Remove</th>
-              <th>Image</th>
-              <th>Item Name</th>
-              <th>Price</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
+        <?php
+       
+         if($data->isEmpty())
+         {
+           echo"<tr><td>Your Cart is empty<td></tr>";
+
+         }else {
+           
+          echo"data ";
+          ?>
             @foreach ($data as $v )
             <tr>
               <td>{{$v->id}}</td>
@@ -53,8 +65,15 @@
             </tr>      
             @endforeach 
             <tr><td colspan="6"><a href="/ordernow" class="btn btn-success float-right">Place Order</a></td></tr>
-          </tbody>
-        </table>
-      </div>
+
+        <?php
+         }
+           
+         ?>
+        </tbody>
+      </table>
+    </div>    
+   
+   
 
 @endsection

@@ -21,7 +21,7 @@ if(Session::has('user'))
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About us</a>
+          <a class="nav-link" href="/about">About us</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,7 +32,7 @@ if(Session::has('user'))
             <a class="dropdown-item" href="#">Delevered Orders</a>
             <a class="dropdown-item" href="#">Cancelled Orders</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">See ALL  Orders</a>
+            <a class="dropdown-item" href="/myorders">See ALL  Orders</a>
           </div>
         </li>
         <li class="nav-item">
